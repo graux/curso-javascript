@@ -39,3 +39,57 @@ var vNaN = vNum / vObj.num
 console.log('# vNaN es de tipo: "' + typeof vNaN + '" y su valor: ' + vNaN)
 vNaN = vNum / vObj.apellido
 console.log('# [DIVISIÓN] vNum es de tipo: "' + typeof vNum + '" y su valor: ' + vNum)
+
+if (vNum > 3) {
+  console.log('El valor es mayor de 3')
+} else if (vNum === 3) {
+  console.log('El valor es 3')
+} else {
+  console.log('El valor es menor que 3')
+}
+
+switch (vText) {
+  case 'javascript':
+    console.log('El Valor es JavaScript')
+    break
+  case 'contenido':
+    console.log('El Valor es Contenido')
+    break
+  default:
+    console.log('Era otro valor')
+}
+
+var total = 0
+for (var index = 0; index < vArray.length; index++) {
+  if (typeof vArray[index] === 'string') {
+    continue
+  }
+  total += vArray[index]
+}
+console.log('El valor total es: ' + total)
+
+var vData = { nombre: 'Fran', apellido: 'Grau', edad: 35, empresa: 'Kydemy' }
+var resumen = ''
+for (var prop in vData) {
+  if (prop === 'edad' && vData[prop] < 18) {
+    resumen = null
+    break
+  }
+  resumen += prop + ' -> ' + vData[prop] + ' / '
+}
+if (resumen) {
+  console.log(resumen)
+} else {
+  console.log('Menor de Edad')
+}
+
+var vStack = [3, -4, 52, -32, 12, -32, 4, 2, -51]
+var val = null
+var totalPos = 0
+while (vStack.length > 0) {
+  val = vStack.shift()
+  if (val > 0) {
+    totalPos += val
+  }
+}
+console.log('El total de positivos es: ' + totalPos)
