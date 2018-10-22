@@ -93,3 +93,113 @@ while (vStack.length > 0) {
   }
 }
 console.log('El total de positivos es: ' + totalPos)
+
+// FUNCTIONS
+var showParameter = function (index, param) {
+  console.log('Param index ' + index + ': ' + param)
+}
+
+function parametersToArray () {
+  var params = []
+  for (var index in arguments) {
+    showParameter(index, arguments[index])
+    params.push(arguments[index])
+  }
+  return params
+}
+
+var paramArray = parametersToArray('Esto', 'son', 4, 'parámetros')
+console.log('Param Array: ', paramArray)
+console.log('Funcion: ', showParameter)
+console.log('Funcion Valor: ', showParameter(0, 'Console'))
+
+var vTres = 3
+function alCuadrado (valor) {
+  valor = valor * valor
+  return valor
+}
+console.log('vTres: ' + vTres + ' / alCuadrado: ' + alCuadrado(vTres))
+
+var valores = [1, 1, 2, 3, 5]
+function generarFibonacci (valoresFib, numNuevos) {
+  var lastIndex = valoresFib.length - 1
+  for (var index = 0; index < numNuevos; index++) {
+    valores.push(valoresFib[lastIndex] + valoresFib[lastIndex - 1])
+    lastIndex++
+  }
+  return valoresFib
+}
+var nuevosValores = generarFibonacci(valores, 5)
+console.log('Valores:', valores, 'Nuevos Valores:', nuevosValores)
+
+// METHODS
+function Persona (nombre, apellido, edad, companyia) {
+  this.nombre = nombre
+  this.apellido = apellido
+  this.edad = edad
+  this.companyia = companyia
+  this.saludar = function (lang) {
+    var saludo = null
+    switch (lang) {
+      case 'en':
+        saludo = 'Hello'
+        break
+      case 'ca':
+        saludo = 'Uep'
+        break
+      default:
+        saludo = 'Hola'
+    }
+    console.log(saludo + ' ' + this.nombre + ' ' + this.apellido)
+  }
+}
+var per1 = new Persona('Fran', 'Grau', 35, 'Kydemy')
+var per2 = new Persona('Juan Antonio', 'Darder', null, 'PalmaActiva')
+per1.saludar()
+per2.saludar('ca')
+
+// Math
+var animales = ['león', 'zebra', 'elefante', 'girafa', 'hipopotamo', 'mono', 'rinoceronte', 'gacela', 'tigre', 'avestruz']
+function animalesAleatorios (numAnimales) {
+  numAnimales = Math.ceil(Math.abs(numAnimales))
+  var animalesSeleccionados = []
+  var indiceAnimal = null
+  for (var index = 0; index < numAnimales; index++) {
+    indiceAnimal = Math.floor(Math.random() * animales.length)
+    animalesSeleccionados.push(animales[indiceAnimal])
+  }
+  return animalesSeleccionados
+}
+var misAnimales = animalesAleatorios(-3.4)
+console.log(misAnimales)
+
+// Letra DNI
+function calcularLetraDNI (numeroDNI) {
+  var resto = numeroDNI % 23
+  var letras = ['T', 'R', 'W', 'A', 'G', 'M', 'Y', 'F', 'P', 'D', 'X', 'B', 'N', 'J', 'Z', 'S', 'Q', 'V', 'H', 'L', 'C', 'K', 'E']
+  var letraDNI = letras[resto]
+  return numeroDNI + '-' + letraDNI
+}
+var dni = 44123456
+console.log('El DNI con Letra es: ' + calcularLetraDNI(dni))
+
+// Invertir String
+function invertirString1 (texto) {
+  var resultado = ''
+  for (var index in texto) {
+    resultado = texto.charAt(index) + resultado
+  }
+  return resultado
+}
+var texto = 'Hola, esto es un ejercicio'
+console.log('El texto \'' + texto + '\' invertido es \'' + invertirString1(texto) + '\'')
+
+// Invertir String 2
+function invertirString2 (texto) {
+  var resultado = []
+  for (var index in texto) {
+    resultado.unshift(texto[index])
+  }
+  return resultado.join('')
+}
+console.log('El texto \'' + texto + '\' invertido es \'' + invertirString2(texto) + '\'')

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Módulo 1, Clase 4: Ejercicio 2 - Calculadora</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        
+        <section class="columns is-centered">
+            <div class="column is-4">
+                <div class="box">
+                    <div class="columns is-multiline">
+                        <div class="column is-12"><h1 class="title has-text-primary has-text-centered">Calculadora JS</h1></div>
+                        <div class="column is-4"></div>
+                        <div class="column is-8">
+                            <div class="control has-icons-left has-icons-right">
+                                <input type="text" class="input is-medium has-text-right" id="op1" />
+                                <span class="icon is-left">
+                                    <i class="fas fa-dice-one"></i>
+                                </span>
+                                <span class="icon is-right has-text-danger is-hidden" id="op1IconError">
+                                        <i class="fas fa-exclamation"></i>
+                                </span>
+                                <span class="icon is-right has-text-success is-hidden" id="op1IconOk">
+                                        <i class="fas fa-check"></i>
+                                </span>
+                            </div> 
+                        </div>
+                        <div class="column is-4">
+                            <div class="select is-medium">
+                                <select id="selOp">
+                                    <option value="plus" selected>+</option>
+                                    <option value="minus">-</option>
+                                    <option value="mult">×</option>
+                                    <option value="divi">÷</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="column is-8">
+                            <div class="control has-icons-left has-icons-right">
+                                <input type="text" class="input is-medium has-text-right" id="op2" />
+                                <span class="icon is-left">
+                                    <i class="fas fa-dice-two"></i>
+                                </span>
+                                <span class="icon is-right has-text-danger is-hidden" id="op2IconError">
+                                        <i class="fas fa-exclamation"></i>
+                                </span>
+                                <span class="icon is-right has-text-success is-hidden" id="op2IconOk">
+                                        <i class="fas fa-check"></i>
+                                </span>
+                            </div> 
+                        </div>
+                        <div class="column is-12">
+                            <hr class="is-marginless"/>
+                        </div>
+                        <div class="column is-12">
+                            <div class="control has-icons-left has-icons-right">
+                                <input type="text" readonly class="input is-medium has-text-right has-text-success" value="0" id="result" />
+                                <span class="icon is-left">
+                                    <i class="fas fa-equals"></i>
+                                </span>
+                                <span class="icon is-right has-text-primary">
+                                        <i class="fab fa-js-square"></i>
+                                </span>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script src="script.js" async defer></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    </body>
+</html>
