@@ -10,25 +10,25 @@ var Calculadora = {
 }
 
 Calculadora.updateResult = function () {
-  var op1Val = this.getOp1Value()
-  var op2Val = this.getOp2Value()
-  if (!isNaN(op1Val) && !isNaN(op2Val)) {
-    var opResult = 0
-    switch (this.getOperator()) {
+  var op1Val = this.getOp1Value() // Leemos el valor numérico del op1
+  var op2Val = this.getOp2Value() // Leemos el valor numérico del op2
+  if (!isNaN(op1Val) && !isNaN(op2Val)) { // Comprobamos que son números válidos
+    var opResult = 0 // Declaramos una variable para guardar el valor del resultado
+    switch (this.getOperator()) { // Obtenemos el tipo de operación y comprobamos cuál es.
       case 'plus':
-        opResult = op1Val + op2Val
+        opResult = op1Val + op2Val // Se ejecuta una suma
         break
       case 'minus':
-        opResult = op1Val - op2Val
+        opResult = op1Val - op2Val // Se ejecuta una resta
         break
       case 'mult':
-        opResult = op1Val * op2Val
+        opResult = op1Val * op2Val // Se ejecuta una multiplicación
         break
       case 'divi':
-        opResult = op1Val / op2Val
+        opResult = op1Val / op2Val // Se ejecuta una división
         break
     }
-    Calculadora.result.value = opResult
+    Calculadora.result.value = opResult // Actualizamos el campo HTML result, utilizando su propiedad value.
   }
 }
 
@@ -89,11 +89,12 @@ Calculadora.onOperatorChange = function () {
 }
 
 Calculadora.getOp1Value = function () {
-  return Number(this.op1.value)
+  return Number(this.op1.value) // Number() o parseFloat() o parseInt() pueden ser usados.
 }
 
 Calculadora.getOp2Value = function () {
-  return Number(this.op2.value)
+  return Number(this.op2.value) // Hay que darse cuenta que se usa this. ya que nos encontramos dentro de un objeto y accedemos a sus propiedades
+  // Además this.op1 o this.op2 son objetos HTML del DOM (Elemen o InputElement mejor dicho) y necesitamos acceder a su valor mediante .value
 }
 
 Calculadora.getOperator = function () {
