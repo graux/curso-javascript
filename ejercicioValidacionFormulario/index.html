@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Módulo 2, Clase 4: Ejercicios Validación</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+    <section class="columns is-centered">
+        <div class="column is-6">
+            <form class="box">
+                <h2 class="title has-text-primary">Ejercicio Validación Formulario</h2>
+                <div class="field" id="campoUsuario">
+                        <label class="label">Nombre y Apellidos</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="text" placeholder="Nombre y Apellidos" id="txtNombre">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-user"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <p class="help is-danger is-hidden">Por favor introduce tu nombre y apellidos</p>
+                        <p class="help is-success is-hidden">El nombre es válido</p>
+                    </div>
+                <div class="field" id="campoUsuario">
+                    <label class="label">Nombre de Usuario</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Nombre de usuario" id="txtUsuario">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-user-circle"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">Nombre de usuario no válido</p>
+                    <p class="help is-success is-hidden">El nombre de usuario es válido</p>
+                </div>
+                <div class="field" id="campoContrasenya">
+                        <label class="label">Contraseña</label>
+                        <div class="control has-icons-left has-icons-right">
+                            <input class="input" type="password" placeholder="Contraseña" id="txtContrasenya">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                        </div>
+                        <p class="help is-danger is-hidden">La contraseña no es válida</p>
+                        <p class="help is-success is-hidden">La contraseña es válida</p>
+                    </div>
+                <div class="field" id="campoEmail">
+                    <label class="label">Dirección Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Dirección de Email" id="txtEmail">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-at"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">La dirección de email no es válida</p>
+                    <p class="help is-success is-hidden">La dirección de email es válida</p>
+                </div>
+                <div class="field" id="campoEmail">
+                    <label class="label">Número DNI</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Documento nacional de identidad" id="txtDNI">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-id-card"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">El número de DNI no es correcto</p>
+                    <p class="help is-success is-hidden">El DNI es válido</p>
+                </div>
+                <div class="field" id="campoEmail">
+                    <label class="label">Fecha de Nacimiento</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Fecha en formato YYYY-MM-DD" id="txtDoB">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-birthday-cake"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">Fecha de nacimiento inválida</p>
+                    <p class="help is-success is-hidden">Fecha de nacimiento correcta</p>
+                </div>
+                <div class="field" id="campoEmail">
+                    <label class="label">Cuántos carácteres tiene tu dirección de Email</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Número de carácteres" id="txtNumCaracteres">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-hashtag"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">No, tu email no tiene esos carácteres</p>
+                    <p class="help is-success is-hidden">Correcto!</p>
+                </div>
+                <div class="field">
+                    <div class="buttons is-centered">
+                        <div class="control">
+                            <input type="submit" class="button is-primary is-uppercase" value="Enviar" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        </div>
+        <script src="script.js" async defer></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+</html>
