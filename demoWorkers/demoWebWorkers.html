@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="section">
+        <div class="field">
+            <div class="tags has-addons">
+                <span class="tag is-large is-dark">NÚMERO WORKER</span>
+                <span class="tag is-large is-primary"><output id="resultadoWorker">0</output></span>
+            </div>
+        </div>
+        <button class="button is-info" onclick="startWorker()">Iniciar Worker</button>
+        <button class="button is-warning" onclick="stopWorker()">Detener Worker</button>
+    </div>
+    <script>
+        var miWorker = null
+        function startWorker() {
+            if (window.Worker) {
+                if (!miWorker) {
+                    miWorker = new Worker("demoWebWorkersWorker.js")
+                    miWorker.addEventListener('message', function (event) {
+                        document.getElementById("resultadoWorker").innerText = event.data
+                    })
+                }
+            } else {
+                document.getElementById("resultadoWorker").innerText = 'Tu navegador no soporta Web Workers'
+            }
+        }
+
+        function stopWorker() {
+            if (miWorker) {
+                miWorker.terminate()
+                miWorker = null
+            }
+        }
+    </script>
+</body>
+
+</html>
