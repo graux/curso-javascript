@@ -29,6 +29,12 @@
             <div class="level-right">
                 <div class="level-item">
                     <div class="tags has-addons">
+                        <span class="tag is-medium is-dark">Status</span>
+                        <span class="tag is-medium is-info">N/A</span>
+                    </div>
+                </div>
+                <div class="level-item">
+                    <div class="tags has-addons">
                         <span class="tag is-medium is-dark">Fotos</span>
                         <span class="tag is-medium is-primary">0</span>
                     </div>
@@ -49,6 +55,7 @@
             btn.classList.add('is-loading')
             axios.get('https://jsonplaceholder.typicode.com/photos').then(
                 function (response) {
+                    document.querySelector('.tags .tag.is-info').innerText = response.status
                     var msg = document.querySelector('.message')
                     msg.classList.add('is-hidden')
                     var galeria = document.querySelector('div.galeria')
@@ -70,7 +77,7 @@
                         imgCol.appendChild(imgFigure)
                         galeria.appendChild(imgCol)
                         img.addEventListener('load', function () {
-                            cargadas ++
+                            cargadas++
                             document.querySelector('.tags .tag.is-primary').innerText = cargadas.toString()
                             if (porCargar - cargadas === 0 && index >= 100) {
                                 btn.classList.remove('is-loading')
@@ -80,6 +87,7 @@
                 }
             ).catch(
                 function (err) {
+                    document.querySelector('.tags .tag.is-info').innerText = err.response.status
                     var msg = document.querySelector('.message')
                     msg.classList.add('is-danger')
                     msg.querySelector('.message-body').innerHTML = 'Error cargando usuarios'
