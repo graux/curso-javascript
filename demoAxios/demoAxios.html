@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+    <div class="section">
+        <nav class="level">
+            <div class="level-left">
+                <div class="level-item">
+                    <button class="button is-medium is-info" onclick="cargarUsuarios(this)">Cargar Fotos</button>
+                </div>
+            </div>
+            <div class="level-right">
+                <div class="level-item">
+                    <div class="tags has-addons">
+                        <span class="tag is-medium is-dark">Fotos</span>
+                        <span class="tag is-medium is-primary">0</span>
+                    </div>
+                </div>
+            </div>
+        </nav>
+        <div class="message">
+            <div class="message-body has-text-centered is-italic">
+                No se han cargado usuarios todavía
+            </div>
+        </div>
+        <div class="columns is-multiline is-gapless galeria">
+        </div>
+    </div>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+        function cargarUsuarios(btn) {
+            btn.classList.add('is-loading')
+            axios.get('https://jsonplaceholder.typicode.com/photos').then(
+                function (response) {
+                    var msg = document.querySelector('.message')
+                    msg.classList.add('is-hidden')
+                    var galeria = document.querySelector('div.galeria')
+                    var imgCol, imgFigure, img = null
+                    var dataImg = null
+                    var porCargar = 0
+                    var cargadas = 0
+                    for (var index = 0; index < response.data.length && index < 100; index++) {
+                        dataImg = response.data[index]
+                        imgCol = document.createElement('div')
+                        imgCol.classList.add('column', 'is-2')
+                        imgFigure = document.createElement('figure')
+                        imgFigure.classList.add('image', 'is-square')
+                        img = document.createElement('img')
+                        img.setAttribute('src', dataImg.url)
+
+                        porCargar++
+                        imgFigure.appendChild(img)
+                        imgCol.appendChild(imgFigure)
+                        galeria.appendChild(imgCol)
+                        img.addEventListener('load', function () {
+                            cargadas ++
+                            document.querySelector('.tags .tag.is-primary').innerText = cargadas.toString()
+                            if (porCargar - cargadas === 0 && index >= 100) {
+                                btn.classList.remove('is-loading')
+                            }
+                        })
+                    }
+                }
+            ).catch(
+                function (err) {
+                    var msg = document.querySelector('.message')
+                    msg.classList.add('is-danger')
+                    msg.querySelector('.message-body').innerHTML = 'Error cargando usuarios'
+                    btn.classList.remove('is-loading')
+                }
+            )
+        }
+    </script>
+</body>
+
+</html>
