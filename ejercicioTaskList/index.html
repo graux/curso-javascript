@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Task List - Usuario</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <div class="hero is-fullheight is-primary">
+            <div class="hero-body">
+                <div class="container">
+                    <h2 class="title has-text-white has-text-centered">Selecciona un Usuario</h2>
+                    <div class="columns is-centered">
+                        <div class="column is-6">
+                            <div class="columns is-centered is-relative" id="contenedorUsuarios">
+                                <div class="column is-12 box" id="loadingUsers">
+                                    <div class="loading">
+                                        <span class="icon is-large has-text-primary">
+                                            <i class="fas fa-circle-notch fa-spin fa-3x"></i>
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <h2 class="title has-text-white has-text-centered">Crea un Usuario</h2>
+                    <div class="field is-horizontal">
+                        <div class="field-body">
+                            <div class="field">
+                                <div class="control has-icons-left has-icons-right" id="controlUsuario">
+                                    <input class="input is-medium" type="text" id="inputNuevoUsuario"/>
+                                    <span class="icon is-left">
+                                        <i class="fas fa-user"></i>
+                                    </span>
+                                    <span class="icon is-right">
+                                        <i class="fas fa-check"></i>
+                                    </span>
+                                </div>
+                            </div>
+                            <button class="button is-info is-medium" id="btnNuevoUsuario">
+                                <span class="icon">
+                                    <i class="fas fa-user-plus"></i>
+                                </span>
+                            </button>
+                        </div>
+                        <p class="help has-text-centered is-size-4 is-danger is-hidden">Nombre de usuario no válido</p>
+                        <p class="help has-text-centered is-size-4 has-text-white is-hidden">El nombre de usuario es válido</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+        <script src="index.js" async defer></script>
+    </body>
+</html>
