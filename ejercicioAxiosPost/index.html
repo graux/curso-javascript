@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]> <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]> <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]> <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Módulo 3, Clase 2: Axios POST</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+
+    <section class="columns is-centered">
+        <div class="column is-6">
+            <form class="box">
+                <h2 class="title has-text-primary">Ejercicio AXIOS POST</h2>
+                <div class="field" id="campoUsuario">
+                    <label class="label">Título</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Título del post" id="txtTitulo">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-pen-alt"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">Por favor introduce un título</p>
+                    <p class="help is-success is-hidden">El título es válido</p>
+                </div>
+                <div class="field" id="campoUsuario">
+                    <label class="label">Contenido del Post</label>
+                    <div class="control has-icons-left has-icons-right">
+                        <input class="input" type="text" placeholder="Introduce contenido" id="txtContenido">
+                        <span class="icon is-small is-left">
+                            <i class="fas fa-comment-alt"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                            <i class="fas fa-check"></i>
+                        </span>
+                    </div>
+                    <p class="help is-danger is-hidden">Intruduce el contenido del post</p>
+                    <p class="help is-success is-hidden">El contenido es válido</p>
+                </div>
+                <div class="field">
+                    <div class="buttons is-centered">
+                        <div class="control">
+                            <input type="submit" class="button is-primary is-uppercase" value="Enviar" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+            <div class="message">
+                <div class="message-body">
+                    <div class="field is-grouped">
+                        <div class="control">
+                            <div class="tags has-addons">
+                                <span class="tag is-dark">STATUS</span>
+                                <span class="tag is-success" id="tagStatus">N/A</span>
+                            </div>
+                        </div>
+                        <div class="control">
+                            <div class="tags has-addons">
+                                <span class="tag is-dark">Header Location</span>
+                                <span class="tag is-info" id="tagLocation">N/A</span>
+                            </div>
+                        </div>
+                    </div>
+                    <output id="responseBody">--</output>
+                </div>
+            </div>
+        </div>
+        </div>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="script.js" async defer></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+</body>
+
+</html>
