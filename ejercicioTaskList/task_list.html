@@ -2,31 +2,143 @@
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Task List - Usuario</title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-        <link rel="stylesheet" href="styles.css">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
+<!--[if gt IE 8]><!-->
+<html class="no-js">
+<!--<![endif]-->
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Task List - Usuario</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma-checkradio@2.1.0/dist/css/bulma-checkradio.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <!--[if lt IE 7]>
             <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
-        <div class="hero is-fullheight is-info">
-            <div class="hero-body">
-                <div class="container">
-                    <h2 class="title has-text-white has-text-centered">Lista de Tareas</h2>
-                    <h4 class="subtitle">TODO: COMPLETAR</h4>
+    <div class="hero is-fullheight is-info">
+        <div class="hero-body">
+            <div class="container">
+                <h2 class="title has-text-white has-text-centered">Lista de Tareas</h2>
+                <div class="columns is-multiline">
+                    <div class="column is-12">
+                        <div class="box">
+                            <div class="level">
+                                <div class="level-left">
+                                    <div class="level-item">&nbsp;</div>
+                                </div>
+                                <div class="level-item task-description" style="flex-direction: column">
+                                    <div class="control has-icons-left has-icons-right" style="width: 100%">
+                                        <input class="input" type="text" placeholder="Descripción de la Tarea" id="txtCrear"
+                                            oninput="validarDescripcion(this)">
+                                        <span class="icon is-small is-left">
+                                            <i class="fas fa-pen-alt"></i>
+                                        </span>
+                                        <span class="icon is-small is-right">
+                                            <i class="fas fa-check"></i>
+                                        </span>
+                                    </div>
+                                    <p class="help is-danger is-hidden">Por favor introduce una descripción</p>
+                                    <p class="help is-success is-hidden">La descripción no es válida</p>
+                                </div>
+                                <div class="level-right">
+                                    <input type="hidden" class="inputTaskID" />
+                                    <div class="level-item">
+                                        <button class="button is-link btnCrear" onclick="crearTarea(this)">
+                                            <span class="icon">
+                                                <i class="fas fa-plus"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="column is-12 is-paddingless">
+                        <hr />
+                    </div>
+                </div>
+                <div class="columns is-multiline" id="contenedorTareas">
+                    <div class="column is-12 is-completed is-hidden" id="plantillaTarea">
+                        <div class="box">
+                            <div class="level">
+                                <div class="level-left">
+                                    <div class="level-item">
+                                        <div class="field">
+                                            <input class="is-checkradio is-info" id="cbxText" type="checkbox" onchange="toggleTarea(this)">
+                                            <label for="cbxText"></label>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="level-item task-description">
+                                    <span>Este es un ejemplo de tarea</span>
+                                    <input type="text" class="input input-editor is-hidden" />
+                                </div>
+                                <div class="level-right">
+                                    <input type="hidden" class="inputTaskID" />
+                                    <div class="level-item botonEditar grupoBotonesNormal">
+                                        <button class="button is-primary btnEditar" onclick="editarTarea(this)">
+                                            <span class="icon">
+                                                <i class="fas fa-edit"></i>
+                                            </span>
+                                        </button>
+                                    </div>
+                                    <div class="level-item is-hidden grupoBotonesEdicion">
+                                        <div class="buttons">
+                                            <button class="button is-danger btnBorrar" onclick="borrarTarea(this)">
+                                                <span class="icon">
+                                                    <i class="fas fa-trash"></i>
+                                                </span>
+                                            </button>
+                                            <button class="button is-success btnGuardar" onclick="guardarTarea(this)">
+                                                <span class="icon">
+                                                    <i class="fas fa-save"></i>
+                                                </span>
+                                            </button>
+                                            <button class="button is-warning btnDeshacer" onclick="cancelarEditarTarea(this)">
+                                                <span class="icon">
+                                                    <i class="fas fa-undo"></i>
+                                                </span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="columns is-multiline is-centered">
+                    <div class="column is-12 is-paddingless">
+                        <hr />
+                    </div>
+                    <div class="column is-12">
+                        <div class="box">
+                            // TODO Mostrar aquí la lista de usuarios conectados
+                        </div>
+                    </div>
+                    <div class="column is-4">
+                        <div class="buttons is-centered">
+                            <div class="button is-danger" onclick="cerrarEditorTareas()">
+                                <span class="icon">
+                                    <i class="fas fa-sign-out-alt"></i>
+                                </span>
+                                <span>Salir</span>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </div>
 
-        <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
-        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-        <script src="task_list.js" async defer></script>
-    </body>
+    <script defer src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="task_list.js" async defer></script>
+</body>
+
 </html>

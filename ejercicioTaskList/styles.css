@@ -1,4 +1,4 @@
-.box {
+.box#loadingUsers {
     position: relative;
     min-height: 6rem;
     overflow: hidden;
@@ -51,4 +51,35 @@ figure.avatar span {
     overflow-x: hidden;
     text-overflow: ellipsis;
     max-width: 100%;
+}
+
+.column .task-description {
+    text-align: left;
+    justify-content: left;
+    font-size: 1.3em;
+}
+
+.column.is-completed .task-description {
+    text-decoration: line-through;
+    font-style: italic;
+    color: #CCC;
+}
+
+.task-description {
+    padding-right: 2rem;
+}
+
+#contenedorTareas > .column {
+    padding-top: 0;
+    padding-bottom: 0.3rem;
+}
+
+#contenedorTareas > .column > .box{
+    padding-top: 0.8rem;
+    padding-bottom: 0.6rem;
+}
+hr {
+    margin: 0.2rem 20% 1rem;
+    height: 1px;
+    background: rgba(255,255,255,0.5)
 }
