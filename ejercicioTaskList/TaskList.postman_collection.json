@@ -1,0 +1,202 @@
+{
+	"variables": [],
+	"info": {
+		"name": "TaskList",
+		"_postman_id": "9139d428-98e0-e91c-2c59-b6604bb95d77",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Get Users",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/users/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get User",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/users/3/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/users/9/",
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 3,\n    \"name\": \"JavaScript\",\n    \"active\": true,\n    \"color\": \"#e06c6c\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post User",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/users/",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"name\": \"Test3\",\n\t\"active\": false,\n\t\"color\": null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Delete User",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/users/3/",
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Tasks",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/tasks/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Post Task",
+			"request": {
+				"url": {
+					"raw": "https://tasklist.kydemy.com:9192/api/tasks/?user_id=3",
+					"protocol": "https",
+					"host": [
+						"tasklist",
+						"kydemy",
+						"com"
+					],
+					"port": "9192",
+					"path": [
+						"api",
+						"tasks",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t\"description\": \"Acabar el ejercicio del curso de JavaScript\",\n\t\"done\": false,\n\t\"owner_id\": 3,\n\t\"editor_id\": null\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Task",
+			"request": {
+				"url": "https://tasklist.kydemy.com:9192/api/tasks/1/",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Update Task",
+			"request": {
+				"url": {
+					"raw": "https://tasklist.kydemy.com:9192/api/tasks/1/?user_id=3",
+					"protocol": "https",
+					"host": [
+						"tasklist",
+						"kydemy",
+						"com"
+					],
+					"port": "9192",
+					"path": [
+						"api",
+						"tasks",
+						"1",
+						""
+					],
+					"query": [
+						{
+							"key": "user_id",
+							"value": "3",
+							"equals": true,
+							"description": ""
+						}
+					],
+					"variable": []
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"id\": 1,\n    \"description\": \"Acabar el ejercicio del curso de JavaScript\",\n    \"done\": true,\n    \"owner_id\": 3,\n    \"editor_id\": 3\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
