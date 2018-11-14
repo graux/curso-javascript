@@ -30,42 +30,43 @@ function inicializarEventos () {
 function validarInput (input) {
   return new Promise(function (resolve, reject) {
     var valid = false
-    switch (input.id) {
-      case 'txtLoginUsuario':
-        // Se valida el nombre de usuario del login: minúsculas y números, de 3 a 20 carácteres
-        valid = null // TODO
-        break
-      case 'txtLoginContrasenya':
-      case 'txtContrasenya':
-        // Se validan las contraseñas: 1 mayuscula, 1 minúscula, 1 número y 1 símbolo. Longitud de 6 a 20 carácteres
-        valid = null // TODO
-        if (input.id === 'txtContrasenya') {
-          validarInput(document.getElementById('txtConfirmacion')).catch(
-            () => { /* No hacer nada */ }
-          )
-        }
-        break
-      case 'txtUsuario':
-        // Se valida el nombre de usuario del login: minúsculas y números, de 3 a 20 carácteres
-        var valido = null // TODO
-        if (valido) {
-          // Si es válido, se pide al servidor si el usuario está en uso y valid se asigna a null
-          validarUsuarioEnUso(input, resolve, reject)
-          valid = null
-        } else {
-          // Si no es válido se asigna false a valid
-          valid = false
-        }
-        break
-      case 'txtConfirmacion':
-        //  Se comprueba que txtContrasenya y txtConfirmacion tienen el mismo valor
-        valid = null // TODO
-        break
-      case 'txtNombre':
-        // Se valida que el nombre tenga al menos dos palabras de 3 o más carácteres. No se permiten números ni símbolos
-        valid = null // TODO
-        break
-    }
+    // TODO Estructura necesaria
+    case 'txtLoginUsuario':
+      // Se valida el nombre de usuario del login: minúsculas y números, de 3 a 20 carácteres
+      valid = null // TODO
+      break
+    case 'txtLoginContrasenya':
+    case 'txtContrasenya':
+      // Se validan las contraseñas: 1 mayuscula, 1 minúscula, 1 número y 1 símbolo. Longitud de 6 a 20 carácteres
+      valid = null // TODO
+      if (input.id === 'txtContrasenya') {
+        validarInput(document.getElementById('txtConfirmacion')).catch(
+          () => { /* No hacer nada */ }
+        )
+      }
+      break
+    case 'txtUsuario':
+      // Se valida el nombre de usuario del login: minúsculas y números, de 3 a 20 carácteres
+      var valido = null // TODO
+      if (valido) {
+        // Si es válido, se pide al servidor si el usuario está en uso y valid se asigna a null
+        validarUsuarioEnUso(input, resolve, reject)
+        valid = null
+      } else {
+        // Si no es válido se asigna false a valid
+        valid = false
+      }
+      break
+    case 'txtConfirmacion':
+      //  Se comprueba que txtContrasenya y txtConfirmacion tienen el mismo valor
+      valid = null // TODO
+      break
+    case 'txtNombre':
+      // Se valida que el nombre tenga al menos dos palabras de 3 o más carácteres. No se permiten números ni símbolos
+      valid = null // TODO
+      break
+    // TODO default
+    
     if (valid === true) {
       // Si valid === true, resolver la promesa con true
       // TODO
