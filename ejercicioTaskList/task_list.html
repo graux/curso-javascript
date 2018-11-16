@@ -88,6 +88,9 @@
                                             </span>
                                         </button>
                                     </div>
+                                    <div class="level-item botonEditar tagEditando is-hidden">
+                                        <span class="tag is-warning">EDITANDO</span>
+                                    </div>
                                     <div class="level-item is-hidden grupoBotonesEdicion">
                                         <div class="buttons">
                                             <button class="button is-danger btnBorrar" onclick="borrarTarea(this)">
@@ -118,7 +121,8 @@
                     </div>
                     <div class="column is-12">
                         <div class="box">
-                            // TODO Mostrar aquí la lista de usuarios conectados
+                            <h2 class="title has-text-dark is-size-4">Usuarios Conectados:</h2>
+                            <ul id="contenedorUsuarios"></ul>
                         </div>
                     </div>
                     <div class="column is-4">

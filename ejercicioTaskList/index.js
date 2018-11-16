@@ -4,6 +4,8 @@ var loadingUsers
 var contenedorUsuarios
 var btnNuevoUsuario
 var inputNuevoUsuario
+var prefijoAPI = 'http://localhost:9192/api/'
+// var prefijoAPI = 'https://tasklist.kydemy.com:9192/api/'
 
 function initUserSelector () {
   loadingUsers = document.getElementById('loadingUsers')
@@ -33,11 +35,10 @@ function crearNuevoUsuario () {
 
 // Cargar todos los usuarios
 function getUsers () {
-  axios.get('https://tasklist.kydemy.com:9192/api/users/').then(
+  axios.get(prefijoAPI + 'users/').then(
     function (response) {
       loadUsers(response.data)
       loadingUsers.classList.add('is-hidden')
-      // TODO volver a leer usuarios cada cierto tiempo. Vaciar el HTML de usuarios y volverlos a generar.
     }
   ).catch(
     function (err) {
@@ -53,8 +54,13 @@ function loadUsers (users) {
   console.log('Usuarios Cargados desde el Servidor/API: ' + users.length, users)
   var userBox = null
   var user = null
-  // TODO crear un userBox por cada usuario, función: generarBoxUsuario([usuario])
-  // TODO añadir un evento onClick a cada userBox y ejecutar función: userBoxClick()
+  for (var index in users) {
+    user = users[index]
+    userBox = generarBoxUsuario(user)
+    userBox.addEventListener('click', userBoxClick)
+    userBox.user = user
+    contenedorUsuarios.appendChild(userBox)
+  }
 }
 
 function generarBoxUsuario (user) {
@@ -88,6 +94,19 @@ function generarBoxUsuario (user) {
 
 function userBoxClick () {
   if (!this.classList.contains('is-available')) {
+    var user = this.user
+    user.active = true
+    axios.put(prefijoAPI + 'users/' + user.id + '/', user)
+      .then(
+        function () {
+          window.location = 'task_list.html?user_id=' + user.id
+        }
+      )
+      .catch(
+        function (error) {
+          console.log('Error Selección usuario', error)
+        }
+      )
     // Primero: actualizar el estado del usuario 'active = true' en el servidor
     // Petición. PUT /api/users/
     // Segundo: redirigir al usuario al archivo task_list.html con el parámetro user_id.
