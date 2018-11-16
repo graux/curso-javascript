@@ -2,10 +2,10 @@ window.onload = initTaskList
 var userID = null
 var user = null
 var timeoutTareas = null
-// var prefijoAPI = 'https://tasklist.kydemy.com:9192/api/'
-var prefijoAPI = 'http://localhost:9192/api/'
+var prefijoAPI = 'https://tasklist.kydemy.com:9192/api/'
+// var prefijoAPI = 'http://localhost:9192/api/'
 
-function initTaskList () {
+function initTaskList() {
   // TODO Comprobar y asignar el userID, mediante window.location.search
   var userIDStr = /user_id=(\d+)/.exec(window.location.search.toString())
   if (userIDStr !== null && userIDStr.length >= 2) {
@@ -17,10 +17,12 @@ function initTaskList () {
       cargarUsuariosConectados()
       cargarUsuario()
     }
+  } else {
+    window.location = 'index.html'
   }
 }
 
-function cargarUsuario () {
+function cargarUsuario() {
   axios.get(prefijoAPI + 'users/' + userID + '/')
     .then(
       function (response) {
@@ -36,7 +38,7 @@ function cargarUsuario () {
     )
 }
 
-function mantenerUsuarioBloqueado () {
+function mantenerUsuarioBloqueado() {
   user.active = true
   axios.put(prefijoAPI + 'users/' + userID + '/', user)
     .then(
@@ -50,7 +52,7 @@ function mantenerUsuarioBloqueado () {
     )
 }
 
-function cargarTareas () {
+function cargarTareas() {
   axios.get(prefijoAPI + 'tasks/')
     .then(
       function (response) {
@@ -77,7 +79,7 @@ function cargarTareas () {
     )
 }
 
-function cargarUsuariosConectados () {
+function cargarUsuariosConectados() {
   axios.get(prefijoAPI + 'users/')
     .then(
       function (response) {
@@ -118,7 +120,7 @@ function cargarUsuariosConectados () {
 //  - Cambiar el valor de active a false: PUT /api/users/[id]/
 //  - Redirigir a la pantalla anterior window.location = 'index.html'
 
-function editarTarea (boton) {
+function editarTarea(boton) {
   var seccion = boton.parentNode.parentNode
   var tarea = seccion.parentNode.parentNode.parentNode.tarea
   tarea.editor_id = userID
@@ -139,7 +141,7 @@ function editarTarea (boton) {
     })
 }
 
-function cancelarEditarTarea (boton) {
+function cancelarEditarTarea(boton) {
   var seccion = boton.parentNode.parentNode.parentNode
   seccion.querySelector('.grupoBotonesEdicion').classList.add('is-hidden')
   seccion.querySelector('.grupoBotonesNormal').classList.remove('is-hidden')
@@ -158,7 +160,7 @@ function cancelarEditarTarea (boton) {
     })
 }
 
-function crearTarea (boton) {
+function crearTarea(boton) {
   // TODO
   // Conseguir la descripción de la tarea
   // Crear la nueva tarea mediante POST / REST
@@ -183,7 +185,7 @@ function crearTarea (boton) {
     })
 }
 
-function guardarTarea (boton) {
+function guardarTarea(boton) {
   // TODO
   // Conseguir el ID y realizar la petición REST
   // Animación Carga?
@@ -195,7 +197,7 @@ function guardarTarea (boton) {
     .catch(function (error) { console.log('Error editando tarea', error) })
 }
 
-function borrarTarea (boton) {
+function borrarTarea(boton) {
   // TODO
   // Conseguir el ID y realizar la petición REST
   // Animación Carga?
@@ -205,7 +207,7 @@ function borrarTarea (boton) {
     .catch(function (error) { console.log('Error borrando tarea', error) })
 }
 
-function toggleTarea (cbx) {
+function toggleTarea(cbx) {
   var col = cbx.parentNode.parentNode.parentNode.parentNode.parentNode.parentNode
   var completed = false
   if (col.classList.contains('is-completed')) {
@@ -231,7 +233,7 @@ function toggleTarea (cbx) {
     })
 }
 
-function cerrarEditorTareas () {
+function cerrarEditorTareas() {
   // TODO Actualizar el usuario para "liberarlo"
   // Redirigir al index.html
   user.active = false
@@ -244,12 +246,12 @@ function cerrarEditorTareas () {
     })
 }
 
-function crearElementoTarea (tarea) {
+function crearElementoTarea(tarea) {
   var plantilla = document.getElementById('plantillaTarea').innerHTML
   var nuevoElemento = document.createElement('div')
   nuevoElemento.classList.add('column', 'is-12')
   nuevoElemento.innerHTML = plantilla
-  document.getElementById('contenedorTareas').prepend(nuevoElemento)
+  document.getElementById('contenedorTareas').append(nuevoElemento)
 
   // Actualizamos el ID para que sea único, y el for del label para que apunte al nuevo ID
   var cbx = nuevoElemento.querySelector('input.is-checkradio')
@@ -279,7 +281,7 @@ function crearElementoTarea (tarea) {
   nuevoElemento.querySelector('.task-description span').innerText = tarea.description
 }
 
-function validarDescripcion (input) {
+function validarDescripcion(input) {
   var valido = /^.{3,100}$/.test(input.value.trim())
   console.log('Valido ' + input.id + ': ', valido)
   var inputClassList = input.classList
